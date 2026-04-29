@@ -105,16 +105,16 @@
         "SMTP",
         "Automation"
       ],
-      "link": "https://github.com/pvk-96/Email_Automation_Bot"
+      "link": "https://github.com/pvk-96/Email_Bot_Automation"
     },
     {
       "title": "Horus CLI",
       "oneliner": "A portable dev-env",
       "description": ":inmux dev env that can be simply downloaded",
       "tech": [
-      	"shellscripting",
-      	"bashscripting"
-      	],
+        "shellscripting",
+        "bashscripting"
+      ],
       "link": "https://github.com/pvk-96/Horus-OS"
     }
   ],
@@ -221,6 +221,6 @@
     "username": "admin",
     "password": "admin"
   },
-  "photoUrl": "",
+  "photoUrl": "/pfp.jpeg",
   "achievements": []
 }
