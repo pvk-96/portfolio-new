@@ -219,13 +219,8 @@
     "formspree": "https://formspree.io/f/mlgaqyka"
   },
   "credentials": {
-    "username": "praneeth",
-<<<<<<< HEAD
-    "password": "varma"
-=======
-    "password": "praneeth"
->>>>>>> 577c8e4 (Move profile picture to About section, add Instagram-style popup on navbar click)
+    "username": "admin",
+    "password": "admin"
   },
-  "photoUrl": "https://photos.app.goo.gl/k1FuxhmmrQejym6f8",
   "achievements": []
 }
