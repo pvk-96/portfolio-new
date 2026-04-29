@@ -50,7 +50,7 @@
         "CLI",
         "File I/O"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96/taskpilot"
     },
     {
       "title": "VaultLocker",
@@ -61,7 +61,7 @@
         "Cryptography",
         "Security"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96/vaultlocker"
     },
     {
       "title": "Password Validator",
@@ -72,7 +72,7 @@
         "Regex",
         "Security"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96/Password_Validator"
     },
     {
       "title": "Shell-Python",
@@ -83,7 +83,7 @@
         "OS",
         "Systems"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96/shell-python"
     },
     {
       "title": "KeySprint",
@@ -94,7 +94,7 @@
         "CLI",
         "Real-time"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96https://github.com/pvk-96/keysprint"
     },
     {
       "title": "Email Automation Bot",
@@ -105,14 +105,17 @@
         "SMTP",
         "Automation"
       ],
-      "link": "https://github.com/pvk-96"
+      "link": "https://github.com/pvk-96https://github.com/pvk-96/keysprint"
     },
     {
       "title": "Horus CLI",
       "oneliner": "A portable dev-env",
       "description": ":inmux dev env that can be simply downloaded",
-      "tech": [],
-      "link": ""
+      "tech": [
+      	"shellscripting",
+      	"bashscripting"
+      	],
+      "link": "https://github.com/pvk-96/Horus-OS"
     }
   ],
   "certifications": [
