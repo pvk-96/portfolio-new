@@ -2,7 +2,8 @@
   "hero": {
     "greeting": "Open for Work // Available for Internships",
     "name": "Praneeth Varma K",
-    "tagline": "I don't just write code — I engineer ideas into existence."
+    "tagline": "I don't just write code — I engineer ideas into existence.",
+    "photoUrl": "/pfp.jpeg"
   },
   "experience": [
     {
@@ -221,6 +222,5 @@
     "username": "admin",
     "password": "admin"
   },
-  "photoUrl": "/pfp.jpeg",
   "achievements": []
 }
