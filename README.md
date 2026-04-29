@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modernized Portfolio - Praneeth Varma K
 
-## Getting Started
+Welcome to the Next.js rewrite of your portfolio! This project was seamlessly migrated from a single HTML file into a scalable, modern React architecture utilizing Next.js (App Router), Tailwind CSS v4, Framer Motion, and React Three Fiber.
 
-First, run the development server:
+## Quick Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To run the project locally:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Visit the Site**
+   Open [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## Features Included
 
-To learn more about Next.js, take a look at the following resources:
+- **Exact Visual Identity**: The font styling (Bebas Neue, DM Sans, Cormorant Garamond, JetBrains Mono), `var(--color-cyan)` themes, and the exact dark premium layout were mapped 1-to-1.
+- **Framer Motion Reveals**: Replaced generic CSS reveals with spring-driven `motion.div` intersections. Elements now enter cohesively.
+- **Upgraded Hero**: The standard 2D canvas infinity curve was reimagined using `@react-three/fiber` as a `<TorusKnot>` infinity mesh layered with interactive pointer lights and dynamic `<Stars />`.
+- **Integrated Full CMS (`/admin`)**: 
+   - A fully replicated Admin UI built locally using React State.
+   - All text logic binds dynamically to a flexible JSON API.
+   - **Default Login**: Username `admin` / Password `admin` (change these in Admin -> Settings).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/page.tsx` — Main global portfolio assembly.
+- `src/app/admin/page.tsx` — Protected CMS Dashboard.
+- `src/components/*` — The core building blocks for each section (Hero, Experience, Projects).
+- `src/data/cms.json` — Acting native database. This handles rapid read/write data mapping without needing external PostgreSQL setups explicitly unless desired later.
+- `src/app/api/content` — Route handlers mediating file saves securely.
