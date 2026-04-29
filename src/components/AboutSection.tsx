@@ -49,38 +49,54 @@ export default function AboutSection({ data }: { data: any }) {
 
   return (
     <div id="about" className="bg-[var(--color-bg2)] border-y border-[var(--color-border-main)] w-full py-[clamp(4rem,10vh,7rem)] px-[clamp(1.5rem,6vw,6rem)]">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-[clamp(3rem,8vw,8rem)] items-center">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[auto_1fr] gap-[clamp(2rem,6vw,4rem)] items-start">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-10%' }}
           transition={{ duration: 0.6 }}
+          className="hidden md:block"
         >
-          <p className="font-mono text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-cyan)] mb-[0.8rem] flex items-center gap-[0.8rem] before:content-['//'] before:text-[var(--color-text-dim)] after:content-[''] after:flex-[0_0_60px] after:h-[1px] after:bg-[var(--color-border-main)]">
-            About
-          </p>
-          <h2 className="font-brutal text-[clamp(2.2rem,5vw,3.5rem)] text-[var(--color-text-main)] mb-[3rem] leading-none">
-            The person <em className="font-script italic text-[var(--color-cyan)] text-[1.1em]">behind</em> the code
-          </h2>
-          <div className="text-[0.92rem] text-[var(--color-text-muted)] leading-[1.9] space-y-4">
-            {data.bio.split('\n').filter((p: string) => p.trim()).map((p: string, i: number) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
+          <img
+            src="/pfp.jpeg"
+            alt="Praneeth Varma K"
+            className="w-[280px] h-[280px] rounded-[8px] object-cover border-2 border-[var(--color-cyan)]"
+            style={{ boxShadow: '0 0 40px var(--color-cyan-glow)' }}
+          />
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-2 gap-[1.4rem]"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-10%' }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {(data.stats || []).map((s: any, i: number) => (
-            <StatBox key={i} stat={s} />
-          ))}
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(3rem,8vw,8rem)] items-center w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="font-mono text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-cyan)] mb-[0.8rem] flex items-center gap-[0.8rem] before:content-['//'] before:text-[var(--color-text-dim)] after:content-[''] after:flex-[0_0_60px] after:h-[1px] after:bg-[var(--color-border-main)]">
+              About
+            </p>
+            <h2 className="font-brutal text-[clamp(2.2rem,5vw,3.5rem)] text-[var(--color-text-main)] mb-[3rem] leading-none">
+              The person <em className="font-script italic text-[var(--color-cyan)] text-[1.1em]">behind</em> the code
+            </h2>
+            <div className="text-[0.92rem] text-[var(--color-text-muted)] leading-[1.9] space-y-4">
+              {data.bio.split('\n').filter((p: string) => p.trim()).map((p: string, i: number) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-2 gap-[1.4rem]"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {(data.stats || []).map((s: any, i: number) => (
+              <StatBox key={i} stat={s} />
+            ))}
+          </motion.div>
+        </div>
 
       </div>
     </div>

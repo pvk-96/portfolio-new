@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function Navbar({ data }: { data: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeHash, setActiveHash] = useState('');
+  const [showPfp, setShowPfp] = useState(false);
 
   const links = [
     { label: 'Experience', href: '#experience' },
@@ -20,14 +21,17 @@ export default function Navbar({ data }: { data: any }) {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[clamp(1.5rem,5vw,3.5rem)] h-[60px] bg-[#0e0c0a]/90 backdrop-blur-[18px] border-b border-[var(--color-border-main)]">
-        <Link href="#hero" className="flex items-center gap-[11px] text-[var(--color-text-main)] no-underline hover-target">
+        <button
+          onClick={() => setShowPfp(!showPfp)}
+          className="flex items-center gap-[11px] text-[var(--color-text-main)] no-underline hover-target bg-transparent border-none cursor-none"
+        >
           {data.photoUrl ? (
             <img src={data.photoUrl} alt="Avatar" className="w-[36px] h-[36px] rounded-full border-[1.5px] border-[var(--color-cyan)] object-cover flex-shrink-0" style={{ boxShadow: '0 0 10px var(--color-cyan-glow)' }} />
           ) : (
             <div className="w-[36px] h-[36px] rounded-full border-[1.5px] border-[var(--color-cyan)] flex items-center justify-center bg-[var(--color-cyan-dim)] text-[var(--color-cyan)] text-xs font-mono" style={{ boxShadow: '0 0 10px var(--color-cyan-glow)' }}>PK</div>
           )}
           <span className="font-mono text-[0.78rem] tracking-[0.06em]">{data.name}</span>
-        </Link>
+        </button>
         <ul className="hidden md:flex items-center gap-[clamp(1rem,3vw,2.5rem)] list-none m-0 p-0">
           {links.map((link) => (
             <li key={link.href}>
@@ -52,6 +56,7 @@ export default function Navbar({ data }: { data: any }) {
         </button>
       </nav>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -73,6 +78,42 @@ export default function Navbar({ data }: { data: any }) {
                 {link.label}
               </a>
             ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Profile picture popup - Instagram style */}
+      <AnimatePresence>
+        {showPfp && data.photoUrl && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[99998] bg-[#0e0c0a]/80 backdrop-blur-[5px] flex items-center justify-center p-4"
+            onClick={() => setShowPfp(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: 'spring', damping: 20 }}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={data.photoUrl}
+                alt={data.name || 'Profile'}
+                className="max-w-[90vw] max-h-[80vh] rounded-[12px] border-2 border-[var(--color-cyan)] object-cover"
+                style={{ boxShadow: '0 0 60px var(--color-cyan-glow)' }}
+              />
+              <button
+                onClick={() => setShowPfp(false)}
+                className="absolute -top-3 -right-3 w-8 h-8 bg-[var(--color-bg)] border-2 border-[var(--color-cyan)] rounded-full text-[var(--color-cyan)] flex items-center justify-center text-lg hover:bg-[var(--color-bg2)] transition-colors cursor-none"
+                style={{ boxShadow: '0 0 10px var(--color-cyan-glow)' }}
+              >
+                ×
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
