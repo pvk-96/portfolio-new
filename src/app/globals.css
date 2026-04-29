@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0e0c0a;
+  --color-bg2: #131109;
+  --color-bg3: #1a1812;
+  --color-bg4: #201e16;
+  
+  --color-cyan: #00c9a7;
+  --color-cyan-dim: rgba(0,201,167,0.10);
+  --color-cyan-glow: rgba(0,201,167,0.28);
+  
+  --color-primary-green: #39ff14;
+  --color-green-dim: rgba(57,255,20,0.08);
+  
+  --color-text-main: #e8e2d4;
+  --color-text-muted: #8a8070;
+  --color-text-dim: #3d3a30;
+  
+  --color-border-main: rgba(0,201,167,0.15);
+  --color-border-h: rgba(0,201,167,0.55);
+
+  --font-brutal: var(--font-bebas-neue);
+  --font-script: var(--font-cormorant);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-body: var(--font-dm-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
 }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-cyan); border-radius: 2px; }
+
+@keyframes crtSweep {
+  0% { opacity: 0; transform: translateY(-100%); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(100%); }
+}
+
+@keyframes glitchBurst {
+  0% { clip-path: inset(0 100% 0 0); transform: translate(0); }
+  5% { clip-path: inset(0 55% 0 0); transform: translate(-2px, 1px); }
+  10% { clip-path: inset(0 20% 0 0); transform: translate(2px, -1px); }
+  15% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  18% { clip-path: inset(30% 0 50% 0); transform: translate(-1px, 0); }
+  21% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  50% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  55% { clip-path: inset(10% 0 70% 0); transform: translate(2px, 0); }
+  58% { clip-path: inset(0 0 0 0); transform: translate(-1px, 1px); }
+  61% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+}
+
+@keyframes nameReveal {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(20px); }
+  to { opacity: 1; clip-path: inset(0 0 0% 0); transform: translateY(0); }
+}
+
+html { scroll-behavior: smooth; }

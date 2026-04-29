@@ -1,0 +1,223 @@
+{
+  "hero": {
+    "greeting": "Open for Work // Available for Internships",
+    "name": "Praneeth Varma K",
+    "tagline": "I don't just write code — I engineer ideas into existence."
+  },
+  "experience": [
+    {
+      "role": "Machine Learning Intern",
+      "company": "Pantech Solutions, India",
+      "period": "Sep 2025 – Oct 2025",
+      "remote": true,
+      "bullets": [
+        "Improved model accuracy via hyperparameter tuning and feature engineering.",
+        "Applied NLP techniques for text classification and sentiment analysis.",
+        "Benchmarked algorithm performance using standardized datasets."
+      ]
+    },
+    {
+      "role": "Artificial Intelligence Intern",
+      "company": "Ediglobe, India",
+      "period": "Jul 2025 – Sep 2025",
+      "remote": true,
+      "bullets": [
+        "Enhanced AI models using machine learning algorithms and data analysis techniques.",
+        "Applied randomized sampling for survey optimization and data collection.",
+        "Improved dataset quality by refining annotation pipelines.",
+        "Evaluated classification algorithms and selected best-performing models."
+      ]
+    },
+    {
+      "role": "Networking Intern",
+      "company": "BSNL Regional Telecom Training Centre, Hyderabad",
+      "period": "Jul 2025 – Aug 2025",
+      "remote": true,
+      "bullets": [
+        "Assisted in implementing network hardware to optimize capacity and speed.",
+        "Participated in training on network architecture and protocols.",
+        "Supported network security design and integration initiatives."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "TaskPilot",
+      "oneliner": "CLI to-do manager built for ruthless productivity.",
+      "description": "A Python-based command-line task management tool designed for efficiency. Supports task creation, listing, prioritization, and deletion — all from the terminal.",
+      "tech": [
+        "Python",
+        "CLI",
+        "File I/O"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "VaultLocker",
+      "oneliner": "Cryptographic file encryption for sensitive data.",
+      "description": "A file encryption utility that uses cryptographic algorithms to secure sensitive files. Supports encrypt/decrypt operations with a passphrase interface.",
+      "tech": [
+        "Python",
+        "Cryptography",
+        "Security"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "Password Validator",
+      "oneliner": "Intelligent password strength assessor with rule enforcement.",
+      "description": "A Python utility that evaluates password strength based on length, character diversity, and common pattern detection.",
+      "tech": [
+        "Python",
+        "Regex",
+        "Security"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "Shell-Python",
+      "oneliner": "A Bash shell simulator written entirely in Python.",
+      "description": "An exploration into shell internals — handles command parsing, execution, piping, and basic built-in commands.",
+      "tech": [
+        "Python",
+        "OS",
+        "Systems"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "KeySprint",
+      "oneliner": "Real-time typing speed tester — WPM and accuracy.",
+      "description": "A Python typing speed test application that measures words per minute and accuracy in real time with multiple test modes.",
+      "tech": [
+        "Python",
+        "CLI",
+        "Real-time"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "Email Automation Bot",
+      "oneliner": "Bulk email sender bot for automated communication.",
+      "description": "An automated email dispatching system handling bulk sending, template rendering, and scheduling.",
+      "tech": [
+        "Python",
+        "SMTP",
+        "Automation"
+      ],
+      "link": "https://github.com/pvk-96"
+    },
+    {
+      "title": "Horus CLI",
+      "oneliner": "A portable dev-env",
+      "description": ":inmux dev env that can be simply downloaded",
+      "tech": [],
+      "link": ""
+    }
+  ],
+  "certifications": [
+    {
+      "title": "AWS Academy Graduate",
+      "issuer": "Amazon Web Services",
+      "year": "2025"
+    },
+    {
+      "title": "AI Tools Workshop",
+      "issuer": "Be10X",
+      "year": "2025"
+    },
+    {
+      "title": "Build an AI That Sees Boot Camp",
+      "issuer": "DevTown",
+      "year": "2025"
+    },
+    {
+      "title": "Anthropic Academy Courses",
+      "issuer": "Anthropic",
+      "year": "2025"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        "Python",
+        "C++",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "category": "Frameworks & Tools",
+      "items": [
+        "React",
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Linux"
+      ]
+    },
+    {
+      "category": "Domains",
+      "items": [
+        "Machine Learning",
+        "AI",
+        "Web Development",
+        "Automation",
+        "API Integration"
+      ]
+    },
+    {
+      "category": "Networking & Security",
+      "items": [
+        "Network Architecture",
+        "Protocols",
+        "Cybersecurity",
+        "Network Security"
+      ]
+    },
+    {
+      "category": "Operating Systems",
+      "items": [
+        "Linux (Arch)",
+        "Linux (Ubuntu)",
+        "Windows"
+      ]
+    }
+  ],
+  "about": {
+    "bio": "I'm a 3rd year Computer Science & Engineering student at Maharaj Vijayaram Gajapathi Raj College of Engineering, Vizianagaram. My journey in tech is driven by curiosity — I love understanding how things work at a fundamental level, whether it's a shell interpreter, a neural network, or a network packet.\n\nI've had the opportunity to intern remotely across AI, machine learning, and networking domains, each adding a new layer to how I think about problems. I'm passionate about open source, building tools that are actually useful, and continuously pushing my own limits.\n\nWhen I'm not coding, you'll find me tinkering with Linux setups, exploring algorithms, or participating in hackathons.",
+    "stats": [
+      {
+        "number": "3",
+        "label": "Internships"
+      },
+      {
+        "number": "6+",
+        "label": "Projects"
+      },
+      {
+        "number": "3rd",
+        "label": "Year CSE"
+      },
+      {
+        "number": "∞",
+        "label": "Curiosity"
+      }
+    ]
+  },
+  "contact": {
+    "copy": "Whether you have an internship opportunity, a project idea, or just want to connect — I'm always open to a conversation. Drop me a message and I'll get back to you.",
+    "email": "praneethvarmakopperla@gmail.com",
+    "github": "https://github.com/pvk-96",
+    "linkedin": "https://linkedin.com/in/praneeth-varma-kopperla",
+    "formspree": ""
+  },
+  "credentials": {
+    "username": "admin",
+    "password": "admin"
+  },
+  "photoUrl": "",
+  "achievements": []
+}
