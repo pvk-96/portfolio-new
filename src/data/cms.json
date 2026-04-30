@@ -192,6 +192,21 @@
   ],
   "about": {
     "bio": "I'm a 3rd year Computer Science & Engineering student at Maharaj Vijayaram Gajapathi Raj College of Engineering, Vizianagaram. My journey in tech is driven by curiosity — I love understanding how things work at a fundamental level, whether it's a shell interpreter, a neural network, or a network packet.\n\nI've had the opportunity to intern remotely across AI, machine learning, and networking domains, each adding a new layer to how I think about problems. I'm passionate about open source, building tools that are actually useful, and continuously pushing my own limits.\n\nWhen I'm not coding, you'll find me tinkering with Linux setups, exploring algorithms, or participating in hackathons.",
+    "hackathons": [
+      {
+        "name": "Sankalp 2025",
+        "role": "Organizer",
+        "venue": "MVGR College of Engineering",
+        "year": "2025"
+      },
+      {
+        "name": "AADHRITA 2026 Hack24",
+        "role": "Organizer",
+        "venue": "MVGR College of Engineering",
+        "year": "2026"
+      }
+    ],
+    "resumeUrl": "https://drive.google.com/your-resume-link-here",
     "stats": [
       {
         "number": "3",

@@ -67,20 +67,37 @@ export default function HeroSection({ data }: { data: any }) {
           {tagStart} <span className="text-[var(--color-text-main)]">{tagEnd}</span>
         </motion.p>
 
-        {/* CTA */}
-        <motion.a 
-          href="#projects"
-          className="inline-flex items-center gap-[10px] px-[28px] py-[13px] border border-[var(--color-cyan)] text-[var(--color-cyan)] font-mono text-[0.75rem] tracking-[0.12em] uppercase no-underline rounded-[2px] transition-all duration-300 relative overflow-hidden group hover:text-[var(--color-bg)] hover-target"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.3 }}
-        >
-          <span className="absolute inset-0 bg-[var(--color-cyan)] scale-x-0 origin-left transition-transform duration-350 z-[-1] group-hover:scale-x-100" />
-          View My Work 
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </motion.a>
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-[1rem]">
+          <motion.a 
+            href="#projects"
+            className="inline-flex items-center gap-[10px] px-[28px] py-[13px] border border-[var(--color-cyan)] text-[var(--color-cyan)] font-mono text-[0.75rem] tracking-[0.12em] uppercase no-underline rounded-[2px] transition-all duration-300 relative overflow-hidden group hover:text-[var(--color-bg)] hover-target"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.3 }}
+          >
+            <span className="absolute inset-0 bg-[var(--color-cyan)] scale-x-0 origin-left transition-transform duration-350 z-[-1] group-hover:scale-x-100" />
+            View My Work 
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </motion.a>
+
+          <motion.a 
+            href={data.resumeUrl || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-[10px] px-[28px] py-[13px] bg-[var(--color-cyan)] text-[var(--color-bg)] font-mono text-[0.75rem] tracking-[0.12em] uppercase no-underline rounded-[2px] transition-all duration-300 relative overflow-hidden hover:brightness-110 hover:shadow-[0_0_28px_var(--color-cyan-glow)] hover-target"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.5 }}
+          >
+            Resume 
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+          </motion.a>
+        </div>
       </div>
 
       {/* Scroll indicator */}

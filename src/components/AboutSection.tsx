@@ -82,6 +82,28 @@ export default function AboutSection({ data }: { data: any }) {
               {data.bio.split('\n').filter((p: string) => p.trim()).map((p: string, i: number) => (
                 <p key={i}>{p}</p>
               ))}
+              
+              {data.hackathons && data.hackathons.length > 0 && (
+                <div className="mt-6">
+                  <h3 className="font-mono text-[0.7rem] tracking-[0.15em] uppercase text-[var(--color-cyan)] mb-3">Hackathons Organized</h3>
+                  <div className="flex flex-col gap-3">
+                    {data.hackathons.map((h: any, i: number) => (
+                      <div key={i} className="flex items-center gap-3 p-3 border border-[var(--color-border-main)] rounded-[3px] bg-[var(--color-bg3)] hover:border-[var(--color-cyan)] transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" strokeWidth="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <div>
+                          <div className="font-mono text-[0.82rem] text-[var(--color-text-main)]">{h.name}</div>
+                          <div className="font-mono text-[0.65rem] text-[var(--color-text-dim)]">{h.role} • {h.venue} • {h.year}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
 
