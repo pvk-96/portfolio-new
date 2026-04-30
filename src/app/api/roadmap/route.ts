@@ -1,58 +1,47 @@
 import { NextResponse } from 'next/server';
 import Papa from 'papaparse';
+import { join } from 'path';
+import { readFileSync } from 'fs';
 
-// Fallback data in case CSV fetch fails
-const FALLBACK_MILESTONES = [
-  {
-    id: '1',
-    date: 'Sep 2025 - Oct 2025',
-    title: 'Machine Learning Intern',
-    category: 'internship',
-    description: 'Improved model accuracy via hyperparameter tuning and feature engineering. Applied NLP techniques for text classification and sentiment analysis.',
-    status: 'completed' as const,
-    tags: ['Machine Learning', 'NLP', 'Python'],
-    order: 1,
-  },
-  {
-    id: '2',
-    date: '2025',
-    title: 'Sankalp 2025 Organizer',
-    category: 'career',
-    description: 'Organized Sankalp 2025 hackathon at MVGR College of Engineering.',
-    status: 'completed' as const,
-    tags: ['Hackathon', 'Organizer', 'Leadership'],
-    order: 2,
-  },
-  {
-    id: '3',
-    date: '2026',
-    title: 'AADHRITA 2026 Hack24 Organizer',
-    category: 'career',
-    description: 'Organizing AADHRITA 2026 Hack24 at MVGR College of Engineering.',
-    status: 'in-progress' as const,
-    tags: ['Hackathon', 'Organizer', 'Leadership'],
-    order: 3,
-  },
-];
+// Read CSV URL from cms.json as fallback
+let csvUrlFromConfig = '';
+try {
+  const cmsPath = join(process.cwd(), 'src', 'data', 'cms.json');
+  if (require('fs').existsSync(cmsPath)) {
+    const cmsData = JSON.parse(readFileSync(cmsPath, 'utf-8'));
+    csvUrlFromConfig = cmsData.roadmapCsvUrl || '';
+  }
+} catch (e) {
+  console.log('Could not read CSV URL from cms.json');
+}
 
 export async function GET() {
   try {
-    const csvUrl = process.env.NEXT_PUBLIC_ROADMAP_CSV_URL;
+    // Try environment variable first, then fall back to cms.json
+    const csvUrl = process.env.NEXT_PUBLIC_ROADMAP_CSV_URL || process.env.ROADMAP_CSV_URL || csvUrlFromConfig;
     
     if (!csvUrl) {
-      console.log('No CSV URL configured, using fallback data');
-      return NextResponse.json({ milestones: FALLBACK_MILESTONES });
+      console.error('ROADMAP_CSV_URL not configured in .env.local');
+      return NextResponse.json({ milestones: [] }, { status: 500 });
     }
 
-    const res = await fetch(csvUrl, { redirect: 'follow' });
-    if (!res.ok) throw new Error('Failed to fetch CSV');
+    console.log('Fetching CSV from:', csvUrl);
+    const res = await fetch(csvUrl, { 
+      redirect: 'follow',
+      cache: 'no-store'
+    });
+    
+    if (!res.ok) {
+      console.error('Failed to fetch CSV:', res.status, res.statusText);
+      throw new Error('Failed to fetch CSV');
+    }
     
     const csvText = await res.text();
     
     // Check if we got HTML instead of CSV
-    if (csvText.trim().startsWith('<')) {
-      console.log('Got HTML instead of CSV, using fallback data');
-      return NextResponse.json({ milestones: FALLBACK_MILESTONES });
+    if (csvText.trim().toLowerCase().startsWith('<html') || csvText.trim().startsWith('<')) {
+      console.error('Got HTML instead of CSV');
+      return NextResponse.json({ milestones: [] }, { status: 500 });
     }
     
     const parseResult = Papa.parse(csvText, {
@@ -66,6 +55,7 @@ export async function GET() {
     }
     
     const milestones = (parseResult.data as any[])
+      .filter((row) => row.id && row.title) // Filter out empty rows
       .map((row) => ({
         id: String(row.id || ''),
         date: String(row.date || ''),
@@ -78,15 +68,10 @@ export async function GET() {
       }))
       .sort((a, b) => a.order - b.order);
     
-    if (milestones.length === 0) {
-      console.log('No milestones from CSV, using fallback data');
-      return NextResponse.json({ milestones: FALLBACK_MILESTONES });
-    }
-    
+    console.log('Parsed milestones:', milestones.length);
     return NextResponse.json({ milestones });
   } catch (error) {
     console.error('Roadmap API Error:', error);
-    console.log('Using fallback data due to error');
-    return NextResponse.json({ milestones: FALLBACK_MILESTONES });
+    return NextResponse.json({ milestones: [] }, { status: 500 });
   }
 }
