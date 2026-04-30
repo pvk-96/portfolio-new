@@ -14,6 +14,7 @@ export default function Navbar({ data }: { data: any }) {
     { label: 'Projects', href: '#projects' },
     { label: 'Certifications', href: '#certifications' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Roadmap', href: '/roadmap' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
