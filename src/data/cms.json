@@ -206,7 +206,7 @@
         "year": "2026"
       }
     ],
-    "resumeUrl": "https://drive.google.com/your-resume-link-here",
+    "resumeUrl": "/Praneeth_Varma_Kopperla_Resume.pdf",
     "stats": [
       {
         "number": "3",
@@ -215,6 +215,10 @@
       {
         "number": "6+",
         "label": "Projects"
+      },
+      {
+        "number": "10+",
+        "label": "Hackathons Attended"
       },
       {
         "number": "3rd",
