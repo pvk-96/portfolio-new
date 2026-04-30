@@ -34,8 +34,10 @@ export default function RoadmapTimeline({ milestones }: RoadmapTimelineProps) {
   return (
     <>
       <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute left-[7px] md:left-[7px] top-0 bottom-0 w-[2px] bg-[var(--color-border-main)]" />
+        {/* Vertical line with neon-cyan glow */}
+        <div className="absolute left-[7px] md:left-[7px] top-0 bottom-0 w-[2px] bg-[var(--color-cyan)] opacity-50" 
+             style={{ boxShadow: '0 0 8px var(--color-cyan), 0 0 16px var(--color-cyan-glow), 0 0 32px rgba(0,201,167,0.3)' }} 
+        />
         
         {/* Milestones */}
         <div className="flex flex-col gap-8 md:gap-10 relative z-10 pl-[30px] md:pl-[30px]">

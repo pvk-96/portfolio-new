@@ -58,7 +58,7 @@ export default function AboutSection({ data }: { data: any }) {
           className="hidden md:block"
         >
           <img
-            src="/pfp.jpeg"
+            src="/pfp.jpg"
             alt="Praneeth Varma K"
             className="w-[280px] h-[280px] rounded-[8px] object-cover border-2 border-[var(--color-cyan)]"
             style={{ boxShadow: '0 0 40px var(--color-cyan-glow)' }}

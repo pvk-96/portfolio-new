@@ -84,9 +84,7 @@ export default function HeroSection({ data }: { data: any }) {
           </motion.a>
 
           <motion.a 
-            href={data.resumeUrl || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/api/download/resume"
             className="inline-flex items-center gap-[10px] px-[28px] py-[13px] bg-[var(--color-cyan)] text-[var(--color-bg)] font-mono text-[0.75rem] tracking-[0.12em] uppercase no-underline rounded-[2px] transition-all duration-300 relative overflow-hidden hover:brightness-110 hover:shadow-[0_0_28px_var(--color-cyan-glow)] hover-target"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -19,18 +19,18 @@ interface MilestoneModalProps {
   onClose: () => void;
 }
 
-const STATUS_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  'completed': { bg: 'bg-[var(--color-primary-green)]/20', text: 'text-[var(--color-primary-green)]', border: 'border-[var(--color-primary-green)]/40' },
-  'in-progress': { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500/40' },
-  'planned': { bg: 'bg-[var(--color-text-dim)]/20', text: 'text-[var(--color-text-dim)]', border: 'border-[var(--color-text-dim)]/40' },
+const STATUS_COLORS: Record<string, { bg: string; text: string; border: string; glow: string }> = {
+  'completed': { bg: 'bg-[var(--color-primary-green)]/30', text: 'text-[var(--color-primary-green)]', border: 'border-[var(--color-primary-green)]/60', glow: '0 0 8px var(--color-primary-green), 0 0 16px rgba(0,255,136,0.4)' },
+  'in-progress': { bg: 'bg-yellow-500/30', text: 'text-yellow-300', border: 'border-yellow-500/60', glow: '0 0 8px #facc15, 0 0 16px rgba(250,204,21,0.4)' },
+  'planned': { bg: 'bg-[var(--color-text-dim)]/30', text: 'text-white', border: 'border-[var(--color-text-dim)]/60', glow: '0 0 8px rgba(255,255,255,0.3), 0 0 16px rgba(255,255,255,0.15)' },
 };
 
-const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  'project': { bg: 'bg-[var(--color-cyan)]/10', text: 'text-[var(--color-cyan)]', border: 'border-[var(--color-cyan)]/30' },
-  'learning': { bg: 'bg-[var(--color-primary-green)]/10', text: 'text-[var(--color-primary-green)]', border: 'border-[var(--color-primary-green)]/30' },
-  'achievement': { bg: 'bg-yellow-500/10', text: 'text-yellow-400', border: 'border-yellow-500/30' },
-  'career': { bg: 'bg-[var(--color-cyan)]/10', text: 'text-[var(--color-cyan)]', border: 'border-[var(--color-cyan)]/30' },
-  'default': { bg: 'bg-[var(--color-text-dim)]/10', text: 'text-[var(--color-text-dim)]', border: 'border-[var(--color-text-dim)]/30' },
+const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string; glow: string }> = {
+  'project': { bg: 'bg-[var(--color-cyan)]/20', text: 'text-[var(--color-cyan)]', border: 'border-[var(--color-cyan)]/60', glow: '0 0 8px var(--color-cyan), 0 0 16px var(--color-cyan-glow)' },
+  'learning': { bg: 'bg-[var(--color-primary-green)]/20', text: 'text-[var(--color-primary-green)]', border: 'border-[var(--color-primary-green)]/60', glow: '0 0 8px var(--color-primary-green), 0 0 16px rgba(0,255,136,0.4)' },
+  'achievement': { bg: 'bg-yellow-500/20', text: 'text-yellow-300', border: 'border-yellow-500/60', glow: '0 0 8px #facc15, 0 0 16px rgba(250,204,21,0.4)' },
+  'career': { bg: 'bg-[var(--color-cyan)]/20', text: 'text-[var(--color-cyan)]', border: 'border-[var(--color-cyan)]/60', glow: '0 0 8px var(--color-cyan), 0 0 16px var(--color-cyan-glow)' },
+  'default': { bg: 'bg-[var(--color-text-dim)]/20', text: 'text-white', border: 'border-[var(--color-text-dim)]/60', glow: '0 0 8px rgba(255,255,255,0.3), 0 0 16px rgba(255,255,255,0.15)' },
 };
 
 export default function MilestoneModal({ milestone, onClose }: MilestoneModalProps) {
@@ -73,40 +73,53 @@ export default function MilestoneModal({ milestone, onClose }: MilestoneModalPro
             ×
           </button>
           
-          {/* Status & Category */}
+          {/* Status & Category with brighter text and glow */}
           <div className="flex items-center gap-2 mb-4 flex-wrap">
-            <span className={`px-3 py-1 rounded-full text-[0.6rem] font-mono uppercase tracking-[0.1em] ${statusStyle.bg} ${statusStyle.text} ${statusStyle.border} border`}>
+            <span 
+              className={`px-3 py-1 rounded-full text-[0.65rem] font-mono uppercase tracking-[0.12em] ${statusStyle.bg} ${statusStyle.text} ${statusStyle.border} border`}
+              style={{ textShadow: statusStyle.glow }}
+            >
               {milestone.status.replace('-', ' ')}
             </span>
-            <span className={`px-3 py-1 rounded-full text-[0.6rem] font-mono uppercase tracking-[0.1em] ${categoryStyle.bg} ${categoryStyle.text} ${categoryStyle.border} border`}>
+            <span 
+              className={`px-3 py-1 rounded-full text-[0.65rem] font-mono uppercase tracking-[0.12em] ${categoryStyle.bg} ${categoryStyle.text} ${categoryStyle.border} border`}
+              style={{ textShadow: categoryStyle.glow }}
+            >
               {milestone.category}
             </span>
           </div>
           
-          {/* Title */}
-          <h2 className="font-brutal text-[1.8rem] md:text-[2.2rem] text-[var(--color-text-main)] mb-3">
+          {/* Title - brightest white with glow */}
+          <h2 
+            className="font-brutal text-[1.8rem] md:text-[2.2rem] text-white mb-3"
+            style={{ textShadow: '0 0 8px rgba(255,255,255,0.4), 0 0 16px rgba(255,255,255,0.2)' }}
+          >
             {milestone.title}
           </h2>
           
-          {/* Date */}
-          <p className="font-mono text-[0.75rem] text-[var(--color-text-dim)] mb-6">
+          {/* Date - brighter */}
+          <p 
+            className="font-mono text-[0.75rem] text-white/90 mb-6"
+            style={{ textShadow: '0 0 6px rgba(255,255,255,0.3)' }}
+          >
             {milestone.date}
           </p>
           
-          {/* Description */}
-          <div className="text-[0.92rem] text-[var(--color-text-muted)] leading-[1.8] mb-6">
+          {/* Description - brighter */}
+          <div className="text-[0.92rem] text-[var(--color-text-main)] leading-[1.8] mb-6">
             {milestone.description.split('\n').map((p: string, i: number) => (
               <p key={i} className="mb-2">{p}</p>
             ))}
           </div>
           
-          {/* Tags */}
+          {/* Tags - brighter with glow */}
           {milestone.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {milestone.tags.map((tag: string, i: number) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-[var(--color-cyan)]/10 text-[var(--color-cyan)] text-[0.65rem] font-mono rounded-[3px] border border-[var(--color-cyan)]/30"
+                  className="px-3 py-1 bg-[var(--color-cyan)]/15 text-[var(--color-cyan)] text-[0.65rem] font-mono rounded-[3px] border border-[var(--color-cyan)]/40"
+                  style={{ textShadow: '0 0 8px var(--color-cyan), 0 0 16px var(--color-cyan-glow)' }}
                 >
                   {tag}
                 </span>
