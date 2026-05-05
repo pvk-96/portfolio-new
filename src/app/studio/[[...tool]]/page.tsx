@@ -1,19 +1,17 @@
 /**
- * This route is responsible for the built-in authoring environment using Sanity Studio.
- * All routes under your studio path is handled by this file using Next.js' catch-all routes:
- * https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes
- *
- * You can learn more about the next-sanity package here:
- * https://github.com/sanity-io/next-sanity
+ * Simple Sanity Studio embed without next-sanity
+ * Uses an iframe to load the hosted Studio
  */
-
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
-
 export const dynamic = 'force-static'
 
-export { metadata, viewport } from 'next-sanity/studio'
-
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <iframe
+        src="https://9ie44pga.sanity.studio"
+        style={{ width: '100%', height: '100%', border: 'none' }}
+        title="Sanity Studio"
+      />
+    </div>
+  )
 }
