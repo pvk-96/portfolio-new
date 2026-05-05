@@ -56,7 +56,7 @@ export default function GitHubHeatmap({ username }: HeatmapProps) {
 
   const fetchData = useCallback(async () => {
     try {
-      const query = `
+       const query = `
         query {
           user(login: "${username}") {
             contributionsCollection {
