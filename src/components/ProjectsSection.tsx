@@ -35,13 +35,42 @@ function ProjectModal({ project, idx, onClose }: { project: any; idx: number; on
         </p>
         <h3 className="font-brutal text-[2rem] mb-[1.2rem]">{project.title}</h3>
         <p className="text-[0.9rem] text-[var(--color-text-muted)] leading-[1.7] mb-[1.5rem]">{project.description}</p>
+
+        {project.problem && (
+          <>
+            <p className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)] mb-[0.3rem]">Problem</p>
+            <p className="text-[0.85rem] text-[var(--color-text-muted)] leading-[1.6] mb-[1rem]">{project.problem}</p>
+          </>
+        )}
+
+        {project.solution && (
+          <>
+            <p className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)] mb-[0.3rem]">Solution</p>
+            <p className="text-[0.85rem] text-[var(--color-text-muted)] leading-[1.6] mb-[1rem]">{project.solution}</p>
+          </>
+        )}
+
+        {project.role && (
+          <>
+            <p className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)] mb-[0.3rem]">Role</p>
+            <p className="text-[0.85rem] text-[var(--color-text-muted)] leading-[1.6] mb-[1rem]">{project.role}</p>
+          </>
+        )}
+
+        {project.impact && (
+          <>
+            <p className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)] mb-[0.3rem]">Impact / Technical Depth</p>
+            <p className="text-[0.85rem] text-[var(--color-text-muted)] leading-[1.6] mb-[1rem]">{project.impact}</p>
+          </>
+        )}
+
         <p className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)] mb-[0.6rem]">Tech Stack</p>
         <div className="flex flex-wrap gap-[0.4rem] mb-[1.5rem]">
           {(project.tech || []).map((t: string, i: number) => (
-            <span key={i} className="font-mono text-[0.62rem] text-[var(--color-cyan)] bg-[var(--color-cyan-dim)] border border-[rgba(0,201,167,0.2)] rounded-[2px] px-[8px] py-[3px]">
-              {t}
-            </span>
-          ))}
+             <span key={i} className="font-mono text-[0.62rem] text-[var(--color-cyan)] bg-[var(--color-cyan-dim)] border border-[rgba(0,201,167,0.2)] rounded-[2px] px-[8px] py-[3px]">
+               {t}
+             </span>
+           ))}
         </div>
         {project.link && (
           <a 

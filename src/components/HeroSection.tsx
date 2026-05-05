@@ -11,13 +11,17 @@ export default function HeroSection({ data }: { data: any }) {
   const lastName = nameParts.pop();
   const restName = nameParts.join(' ');
 
-  // Split tagline around em-dash
-  let tagStart = data.tagline;
-  let tagEnd = '';
-  const dashIdx = data.tagline.indexOf('—');
+  // Use headline from Sanity, fall back to tagline from cms.json
+  const headline = data.headline || data.tagline || '';
+  const subheading = data.headline ? data.tagline : '';
+
+  // Split headline around em-dash if present
+  let headStart = headline;
+  let headEnd = '';
+  const dashIdx = headline.indexOf('—');
   if (dashIdx > -1) {
-    tagStart = data.tagline.slice(0, dashIdx + 1);
-    tagEnd = data.tagline.slice(dashIdx + 2);
+    headStart = headline.slice(0, dashIdx + 1);
+    headEnd = headline.slice(dashIdx + 2);
   }
 
   return (
@@ -57,15 +61,27 @@ export default function HeroSection({ data }: { data: any }) {
           </motion.span>
         </motion.h1>
 
-        {/* Tagline */}
+        {/* Headline */}
         <motion.p 
-          className="font-script italic text-[clamp(1.3rem,3.5vw,2.2rem)] font-light text-[var(--color-text-muted)] mb-[3rem]"
+          className="font-script italic text-[clamp(1.3rem,3.5vw,2.2rem)] font-light text-[var(--color-text-muted)] mb-[1rem]"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          {tagStart} <span className="text-[var(--color-text-main)]">{tagEnd}</span>
+          {headStart} <span className="text-[var(--color-text-main)]">{headEnd}</span>
         </motion.p>
+
+        {/* Subheading (tagline when headline is present) */}
+        {subheading && (
+          <motion.p 
+            className="font-mono text-[clamp(0.8rem,1.5vw,1rem)] text-[var(--color-text-muted)] mb-[3rem]"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
+            {subheading}
+          </motion.p>
+        )}
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-[1rem]">

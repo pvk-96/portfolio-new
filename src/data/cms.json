@@ -118,6 +118,28 @@
       	"bashscripting"
       	],
       "link": "https://github.com/pvk-96/Horus-OS"
+    },
+    {
+      "title": "Circuit Chronicles",
+      "oneliner": "F1 telemetry dashboard with FastF1 API",
+      "description": "A data-driven web app that fetches live and historical F1 telemetry using the FastF1 API, processes session data, and visualizes lap times, sector times, and speed traces.",
+      "featured": true,
+      "problem": "F1 telemetry data is complex, high-volume, and not easily accessible to casual fans who want insights without deep technical knowledge.",
+      "solution": "Built a pipeline using FastF1 API to fetch session data, processed it with pandas for cleaning and aggregation, and rendered interactive visualizations using Plotly and React charts.",
+      "role": "Full Stack Developer & Data Engineer",
+      "impact": "Successfully visualized telemetry for 2023-2024 F1 seasons with sub-second data processing. Handles 5000+ data points per session with efficient caching and pagination.",
+      "tech": [
+        "Python",
+        "FastF1 API",
+        "Pandas",
+        "Plotly",
+        "React",
+        "Data Visualization"
+      ],
+      "link": "https://github.com/pvk-96/circuit-chronicles",
+      "apiUsage": "FastF1 (Ergast API wrapper for F1 data)",
+      "dataProcessing": "Used pandas for cleaning telemetry data, handling missing values, and aggregating lap/sector times. Implemented caching to avoid redundant API calls.",
+      "visualization": "Interactive charts for lap times, speed traces, and sector comparisons using Plotly. Real-time session status indicators."
     }
   ],
   "certifications": [
