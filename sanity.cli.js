@@ -1,6 +1,6 @@
 module.exports = {
   api: {
-    projectId: '9ie44pga',
-    dataset: 'production',
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   }
 }
