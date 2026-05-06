@@ -59,7 +59,7 @@ export default function GitHubHeatmap({ username }: HeatmapProps) {
        const query = `
         query {
           user(login: "${username}") {
-            contributionsCollection(from: "2024-01-01", to: "2026-12-31") {
+            contributionsCollection {
               contributionCalendar {
                 weeks {
                   contributionDays {
