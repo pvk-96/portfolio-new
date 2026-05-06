@@ -18,7 +18,7 @@ const client = createClient({
 async function migrate() {
   if (!process.env.SANITY_API_TOKEN) {
     console.error('ERROR: Missing SANITY_API_TOKEN in .env.local')
-    console.error('Get a token from: https://www.sanity.io/manage/project/9ie44pga/api#tokens')
+    console.error('Get a token from: https://www.sanity.io/manage/project/' + process.env.NEXT_PUBLIC_SANITY_PROJECT_ID + '/api#tokens')
     process.exit(1)
   }
 

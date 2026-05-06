@@ -1,5 +1,5 @@
 {
-  "roadmapCsvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU44VjD-gNJP6yv4EJOWcvXegsqAYDJO-8qqiSKxxPVF45p6FZG0cqjwAgg4xghiYCKL_5PjxY0-Sw/pub?output=csv",
+  "roadmapCsvUrl": "<REPLACE_WITH_ENV>",
   "hero": {
     "greeting": "Open for Work // Available for Internships",
     "name": "Praneeth Varma K",
@@ -259,10 +259,6 @@
     "github": "https://github.com/pvk-96",
     "linkedin": "https://linkedin.com/in/praneeth-varma-kopperla",
     "formspree": "https://formspree.io/f/mlgaqyka"
-  },
-  "credentials": {
-    "username": "admin",
-    "password": "admin"
   },
   "achievements": []
 }
