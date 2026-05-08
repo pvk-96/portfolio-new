@@ -1,40 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 
 export default function ContactSection({ data }: { data: any }) {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!data.formspree || data.formspree.includes('YOUR_FORM_ID')) {
-      setStatus('error');
-      return;
-    }
-    
-    setStatus('sending');
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: formData,
-      });
-      if (res.ok) {
-        setStatus('success');
-      } else {
-        setStatus('idle');
-        alert("Failed to send the message. Please try again.");
-      }
-    } catch {
-      setStatus('idle');
-      alert("Network error. Please try again.");
-    }
-  };
-
   if (!data) return null;
 
   return (
@@ -76,38 +45,27 @@ export default function ContactSection({ data }: { data: any }) {
           viewport={{ once: true, margin: '-10%' }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {status === 'success' ? (
-            <div className="text-center p-[2rem] border border-[var(--color-cyan)] rounded-[3px] bg-[var(--color-cyan-dim)] font-mono text-[0.82rem] text-[var(--color-cyan)] tracking-[0.05em]">
-              ✓ Message sent! I'll get back to you soon.
+          <form action="https://formspree.io/f/mlgaqyka" method="POST" className="flex flex-col gap-[1rem]">
+            <div className="flex flex-col gap-[0.4rem]">
+              <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Your Name</label>
+              <input name="name" required placeholder="John Doe" className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)]" />
             </div>
-          ) : status === 'error' ? (
-             <div className="text-center p-[2rem] border border-[var(--color-cyan)] rounded-[3px] bg-[var(--color-cyan-dim)] font-mono text-[0.82rem] text-[var(--color-cyan)] tracking-[0.05em]">
-               ⚠ Formspree not configured. Set your endpoint in Admin → Contact.
-             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-[1rem]">
-              <div className="flex flex-col gap-[0.4rem]">
-                <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Your Name</label>
-                <input name="name" required placeholder="John Doe" className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)]" />
-              </div>
-              <div className="flex flex-col gap-[0.4rem]">
-                <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Email</label>
-                <input name="email" type="email" required placeholder="john@example.com" className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)]" />
-              </div>
-              <div className="flex flex-col gap-[0.4rem]">
-                <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Message</label>
-                <textarea name="message" required placeholder="Tell me about your project or opportunity..." className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)] min-h-[120px] resize-none" />
-              </div>
-              <button 
-                type="submit" 
-                disabled={status === 'sending'}
-                className="inline-flex items-center justify-center gap-[10px] p-[13px_28px] bg-[var(--color-cyan)] text-[var(--color-bg)] font-mono text-[0.78rem] tracking-[0.1em] uppercase border-none rounded-[2px] cursor-none transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_28px_var(--color-cyan-glow)] disabled:opacity-70 disabled:cursor-auto hover-target"
-              >
-                {status === 'sending' ? 'Sending...' : 'Send Message'}
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-              </button>
-            </form>
-          )}
+            <div className="flex flex-col gap-[0.4rem]">
+              <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Email</label>
+              <input name="email" type="email" required placeholder="john@example.com" className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)]" />
+            </div>
+            <div className="flex flex-col gap-[0.4rem]">
+              <label className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[var(--color-text-dim)]">Message</label>
+              <textarea name="message" required placeholder="Tell me about your project or opportunity..." className="bg-[var(--color-bg2)] border border-[var(--color-border-main)] rounded-[2px] p-[11px_15px] font-body text-[0.88rem] text-[var(--color-text-main)] outline-none transition-all duration-300 focus:border-[var(--color-cyan)] focus:shadow-[0_0_0_3px_var(--color-cyan-dim)] min-h-[120px] resize-none" />
+            </div>
+            <button 
+              type="submit"
+              className="inline-flex items-center justify-center gap-[10px] p-[13px_28px] bg-[var(--color-cyan)] text-[var(--color-bg)] font-mono text-[0.78rem] tracking-[0.1em] uppercase border-none rounded-[2px] cursor-none transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_28px_var(--color-cyan-glow)] hover-target"
+            >
+              Send Message
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
         </motion.div>
       </div>
     </section>
