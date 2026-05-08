@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import GitHubHeatmap from './GitHubHeatmap';
 
 function StatBox({ stat }: { stat: any }) {
   const ref = useRef(null);
@@ -124,6 +125,20 @@ export default function AboutSection({ data }: { data: any }) {
                   </div>
                 </div>
               )}
+              
+              <div className="mt-10 p-6 border-2 border-transparent rounded-[8px] bg-[var(--color-bg3)]/60 backdrop-blur-[4px] relative overflow-hidden" style={{ background: 'linear-gradient(var(--color-bg3), var(--color-bg3)) padding-box, linear-gradient(135deg, var(--color-cyan), var(--color-primary-green), var(--color-cyan)) border-box' }}>
+                <div className="absolute inset-0 bg-[var(--color-cyan)]/5 animate-pulse"></div>
+                <h3 className="font-mono text-[0.85rem] tracking-[0.25em] uppercase text-[var(--color-cyan)] mb-4 flex items-center gap-3 relative z-10">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 2.02-.241 1.061-.036 2.065-.786 2.823-1.974 0 0 1.461-.461 4.114.949 1.347-.376 2.811-.965 4.114-.949 1.012-.081 2.02.241 2.02.241.653 1.653.241 2.873.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  GitHub Activity
+                  <span className="ml-auto text-[0.6rem] bg-[var(--color-primary-green)]/20 text-[var(--color-primary-green)] px-3 py-1 rounded-full border border-[var(--color-primary-green)]/30">Live Data</span>
+                </h3>
+                <div className="relative z-10">
+                  <GitHubHeatmap username="pvk-96" />
+                </div>
+              </div>
             </div>
           </motion.div>
 
