@@ -19,10 +19,9 @@ export default function ContactSection({ data }: { data: any }) {
     const formData = new FormData(form);
     
     try {
-      const res = await fetch(data.formspree, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         body: formData,
-        headers: { Accept: 'application/json' },
       });
       if (res.ok) {
         setStatus('success');
