@@ -18,7 +18,7 @@ try {
 export async function GET() {
   try {
     // Try environment variable first, then fall back to cms.json
-    const csvUrl = process.env.NEXT_PUBLIC_ROADMAP_CSV_URL || process.env.ROADMAP_CSV_URL || csvUrlFromConfig;
+    const csvUrl = process.env.ROADMAP_CSV_URL || csvUrlFromConfig;
     
     if (!csvUrl) {
       console.error('ROADMAP_CSV_URL not configured in .env.local');
